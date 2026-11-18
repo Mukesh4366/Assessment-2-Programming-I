@@ -111,3 +111,21 @@ print("Staff Name:", req3.staff_name)
 print("Total:", req3.total)
 print("Status:", req3.status)
 print("Approval Reference:", req3.approval_reference)
+
+# Test 5 - Requisition exactly $500
+req4 = Requisition("19/11/2026", "S004", "Alex")
+
+items4 = [
+    {"cost": 300},
+    {"cost": 200}
+]
+
+req4.add_requisition(items4)
+req4.approve_requisition()
+
+print("\n--- Test 5: Exactly $500 ---")
+print("Requisition ID:", req4.requisition_id)
+print("Staff Name:", req4.staff_name)
+print("Total:", req4.total)
+print("Status:", req4.status)
+print("Approval Reference:", req4.approval_reference)
