@@ -1,6 +1,7 @@
 
 # Assessment 2 - Requisition System
 
+
 class Requisition:
     next_id = 10001
 
@@ -60,5 +61,53 @@ print("Total:", req1.total)
 print("Status:", req1.status)
 print("Approval Reference:", req1.approval_reference)
 
+print("Approval Reference:", req1.approval_reference)
 
 
+# Test 2 - Requisition above $500
+req2 = Requisition("19/11/2026", "S002", "John")
+
+items2 = [
+    {"cost": 400},
+    {"cost": 300}
+]
+
+req2.add_requisition(items2)
+req2.approve_requisition()
+
+print("\n--- Test 2 ---")
+print("Requisition ID:", req2.requisition_id)
+print("Staff Name:", req2.staff_name)
+print("Total:", req2.total)
+print("Status:", req2.status)
+print("Approval Reference:", req2.approval_reference)
+
+# Test 3 - Manager approves pending requisition
+req2.manager_response("Approved")
+
+print("\n--- Test 3: Manager Approval ---")
+print("Requisition ID:", req2.requisition_id)
+print("Staff Name:", req2.staff_name)
+print("Total:", req2.total)
+print("Status:", req2.status)
+print("Approval Reference:", req2.approval_reference)
+
+
+# Test 4 - Manager rejects a requisition
+req3 = Requisition("19/11/2026", "S003", "Sam")
+
+items3 = [
+    {"cost": 350},
+    {"cost": 250}
+]
+
+req3.add_requisition(items3)
+req3.approve_requisition()
+req3.manager_response("Rejected")
+
+print("\n--- Test 4: Manager Rejection ---")
+print("Requisition ID:", req3.requisition_id)
+print("Staff Name:", req3.staff_name)
+print("Total:", req3.total)
+print("Status:", req3.status)
+print("Approval Reference:", req3.approval_reference)
