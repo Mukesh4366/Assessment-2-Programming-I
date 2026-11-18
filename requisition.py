@@ -32,3 +32,33 @@ class Requisition:
             self.approval_reference = "Not available"
 
         return self.status
+
+    def manager_response(self, decision):
+        if self.status == "Pending":
+            if decision == "Approved":
+                self.status = "Approved"
+                self.approval_reference = self.staff_id + str(self.requisition_id)[-3:]
+            elif decision == "Rejected":
+                self.status = "Rejected"
+
+        return self.status
+    
+# Test the requisition system
+req1 = Requisition("19/11/2026", "S001", "Ram")
+
+items = [
+    {"cost": 100},
+    {"cost": 200}
+]
+
+req1.add_requisition(items)
+req1.approve_requisition()
+
+print("Requisition ID:", req1.requisition_id)
+print("Staff Name:", req1.staff_name)
+print("Total:", req1.total)
+print("Status:", req1.status)
+print("Approval Reference:", req1.approval_reference)
+
+
+
